@@ -232,10 +232,16 @@ router.post("/getMostUsed", verifyToken, async (req, res) => {
           $match: {
             uniqueCode: new mongoose.Types.ObjectId(uniqueCode),
           },
+        },
+        {
           $sort: {
             totalCallsDaily: -1,
           },
+        },
+        {
           $skip: 0,
+        },
+        {
           $limit: 4,
         },
       ])
@@ -247,16 +253,32 @@ router.post("/getMostUsed", verifyToken, async (req, res) => {
           $match: {
             uniqueCode: new mongoose.Types.ObjectId(uniqueCode),
           },
+        },
+        {
           $sort: {
             totalCallsDaily: -1,
           },
+        },
+        {
           $skip: 0,
+        },
+        {
           $limit: 4,
         },
       ])
       .exec();
 
-    return response.success("most used", { mostCalls, mostResponseTime }, res);
+    let apiCount = await metricDataModel
+      .findOne({ uniqueCode: uniqueCode })
+      .select("-_id totalApis")
+      .lean();
+
+    apiCount = apiCount?.totalApis;
+    return response.success(
+      "most used",
+      { mostCalls, mostResponseTime, apiCount },
+      res
+    );
   } catch (err) {
     console.log(err);
     return response.error(err, res);
