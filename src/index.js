@@ -168,7 +168,6 @@ router.post("/data", async (req, res) => {
       };
 
       await metricsModel.findByIdAndUpdate(metric._id, { $set: metric });
-      console.log(metrics);
       return response.success(null, 1, res);
     } else {
       return response.success(null, 0, res);
