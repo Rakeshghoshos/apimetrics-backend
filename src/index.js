@@ -41,6 +41,9 @@ const verifyToken = async (req, res, next) => {
   }
 };
 
+router.get("/test",async(req,res)=>{
+  return response.success("working", "successfully deployed", res);
+});
 router.post("/register", async (req, res) => {
   try {
     let data = req.body;
