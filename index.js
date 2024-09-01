@@ -9,7 +9,11 @@ configDotenv({ path: "./.env" });
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://apimetrics-frontend.vercel.app',
+  methods: 'GET,POST,PUT,DELETE',
+   credentials: true,
+}));
 const server = http.createServer(app);
 initSocket(server);
 app.use(express.json({ limit: "100mb" }));
