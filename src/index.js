@@ -60,6 +60,9 @@ router.post("/dailyCron",async(req,res)=>{
       );
       console.log("updated successfully");
     return response.success("daily cron updated successfully", 1, res);
+  }catch (err) {
+    console.log(err);
+    return response.error(err, res);
   }
 });
 
@@ -77,6 +80,9 @@ router.post("/monthlyCron",async(req,res)=>{
       );
       console.log("updated successfully monthly");
     return response.success("monthly cron updated successfully", 1, res);
+  }catch (err) {
+    console.log(err);
+    return response.error(err, res);
   }
 });
 
@@ -94,6 +100,9 @@ router.post("/weeklyCron",async(req,res)=>{
       );
       console.log("updated successfully weekly");
     return response.success("weekly cron updated successfully", 1, res);
+  }catch (err) {
+    console.log(err);
+    return response.error(err, res);
   }
 });
 
