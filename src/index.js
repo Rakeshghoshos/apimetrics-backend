@@ -86,14 +86,14 @@ router.post("/weeklyCron",async(req,res)=>{
         {},
         {
           $set: {
-            avgResponseTimeMonthly: 0,
-            totalCallsMonthly: 0,
-            avgCallsMonthly: 0,
+            avgResponseTimeWeekly: 0,
+            totalCallsWeekly: 0,
+            avgCallsWeekly: 0,
           },
         }
       );
-      console.log("updated successfully monthly");
-    return response.success("monthly cron updated successfully", 1, res);
+      console.log("updated successfully weekly");
+    return response.success("weekly cron updated successfully", 1, res);
   }
 });
 
