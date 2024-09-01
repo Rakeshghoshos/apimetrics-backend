@@ -62,6 +62,42 @@ router.post("/dailyCron",async(req,res)=>{
     return response.success("daily cron updated successfully", 1, res);
   }
 });
+
+router.post("/monthlyCron",async(req,res)=>{
+  try{
+     await metricsModel.updateMany(
+        {},
+        {
+          $set: {
+            avgResponseTimeMonthly: 0,
+            totalCallsMonthly: 0,
+            avgCallsMonthly: 0,
+          },
+        }
+      );
+      console.log("updated successfully monthly");
+    return response.success("monthly cron updated successfully", 1, res);
+  }
+});
+
+router.post("/weeklyCron",async(req,res)=>{
+  try{
+     await metricsModel.updateMany(
+        {},
+        {
+          $set: {
+            avgResponseTimeMonthly: 0,
+            totalCallsMonthly: 0,
+            avgCallsMonthly: 0,
+          },
+        }
+      );
+      console.log("updated successfully monthly");
+    return response.success("monthly cron updated successfully", 1, res);
+  }
+});
+
+
 router.post("/register", async (req, res) => {
   try {
     let data = req.body;
