@@ -44,6 +44,24 @@ const verifyToken = async (req, res, next) => {
 router.get("/test",async(req,res)=>{
   return response.success("working", "successfully deployed", res);
 });
+
+router.post("/dailyCron",async(req,res)=>{
+  try{
+     await metricsModel.updateMany(
+        {},
+        {
+          $set: {
+            totalCallsDaily: 0,
+            avgResponseTimeDaily: 0,
+            minResponseTimeDaily: 0,
+            maxResponseTimeDaily: 0,
+          },
+        }
+      );
+      console.log("updated successfully");
+    return response.success("daily cron updated successfully", 1, res);
+  }
+});
 router.post("/register", async (req, res) => {
   try {
     let data = req.body;
