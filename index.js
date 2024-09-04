@@ -15,12 +15,13 @@ const allowedOrigins = [
 
 app.use(cors({
  origin: (origin, callback) => {
-    if (allowedOrigins.includes(origin) || !origin) {
-      // Allow requests with no origin (like mobile apps or curl requests)
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
+    // if (allowedOrigins.includes(origin) || !origin) {
+    //   // Allow requests with no origin (like mobile apps or curl requests)
+    //   callback(null, true);
+    // } else {
+    //   callback(new Error('Not allowed by CORS'));
+    // }
+   callback(null, true);
   },
   methods: 'GET,POST,PUT,DELETE',
    credentials: true,
