@@ -45,7 +45,7 @@ router.get("/test",async(req,res)=>{
   return response.success("working", "successfully deployed", res);
 });
 
-router.post("/dailyCron",async(req,res)=>{
+router.get("/dailyCron",async(req,res)=>{
   try{
      await metricsModel.updateMany(
         {},
@@ -66,7 +66,7 @@ router.post("/dailyCron",async(req,res)=>{
   }
 });
 
-router.post("/monthlyCron",async(req,res)=>{
+router.get("/monthlyCron",async(req,res)=>{
   try{
      await metricsModel.updateMany(
         {},
@@ -86,7 +86,7 @@ router.post("/monthlyCron",async(req,res)=>{
   }
 });
 
-router.post("/weeklyCron",async(req,res)=>{
+router.get("/weeklyCron",async(req,res)=>{
   try{
      await metricsModel.updateMany(
         {},
